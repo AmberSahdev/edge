@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — Edge (=)</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@14..144,400;14..144,600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              mono: ['IBM Plex Mono','ui-monospace','SFMono-Regular','Menlo','Consolas','monospace'],
+              serif: ['Fraunces','ui-serif','Georgia','serif'],
+            },
+            colors: {
+              background: 'var(--background)',
+              'background-hover': 'var(--background-hover)',
+              foreground: 'var(--foreground)',
+              'muted-foreground': 'var(--muted-foreground)',
+            }
+          }
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+
+  <body class="min-h-full bg-background text-foreground font-mono text-sm antialiased">
+    <div class="p-4 md:p-12 overflow-hidden">
+      <div class="w-full max-w-[44rem]">
+
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+          <a class="text-3xl font-serif" href="/">Edge (=)</a>
+          <nav class="flex gap-6">
+            <a class="ink-link" href="index.html">Home</a>
+            <a class="ink-link ink-link--active" href="contact.html">Contact Us</a>
+          </nav>
+        </header>
+
+        <main id="contact" class="mt-10">
+          <h1 class="text-lg font-semibold mb-2">Get in touch</h1>
+          <p class="mb-6">
+            We’d love to hear about your voice agent stack and QA needs.
+          </p>
+
+          <div class="grid gap-4">
+            <div class="card-soft p-4">
+              <div class="text-xs font-semibold mb-2">Email</div>
+              <a class="ink-link" href="mailto:hello@example.com">hello@example.com</a>
+            </div>
+
+            <div class="card-soft p-4">
+              <div class="text-xs font-semibold mb-2">Calendly</div>
+              <p class="text-xs text-muted">
+                Prefer to chat live? Share a link or propose times at the email above.
+              </p>
+            </div>
+
+            <div class="card-soft p-4">
+              <div class="text-xs font-semibold mb-2">Careers</div>
+              <p class="text-xs text-muted">
+                Send a short note with your background and links to work.
+              </p>
+            </div>
+          </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-12">
+          <div class="max-w-3xl w-full mx-auto flex justify-between py-6 items-baseline footer-line">
+            <p class="font-serif text-lg leading-none">Edge</p>
+            <p class="text-xs text-muted leading-none">QA for Voice Agents</p>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </body>
+</html>

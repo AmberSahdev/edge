@@ -1,0 +1,104 @@
+/* ---------- Paper & Ink Tokens ---------- */
+:root{
+  --background:         #F5F3EB; /* warm paper cream */
+  --background-hover:   #EFEDE5; /* row hover tint */
+  --foreground:         #111111; /* ink */
+  --muted-foreground:   #6B6B6B; /* for blurbs/dates */
+  --rule:               #D1D5DB; /* left timeline rule */
+  --card-white:         #FFFFFF; /* featured cards */
+  --card-soft:          #FAFAF7; /* soft card bg */
+  --soft-border:        #D4D3CB; /* warm gray-beige */
+  --soft-border-hover:  #C0BDAD; /* olive-tan hover */
+  --hard-border:        #000000; /* black line work */
+}
+
+/* ---------- Base ---------- */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  padding-left: 1rem; /* pushes everything right */
+}
+::selection{ background:#111; color:#fff; }
+
+/* ---------- Links w/ underline emphasis ---------- */
+.ink-link{
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 1px;
+}
+.ink-link:hover{
+  text-decoration-thickness: 2px;
+}
+.ink-link--active{
+  text-decoration-thickness: 3px; /* looks "selected" */
+}
+
+/* ---------- Timeline ---------- */
+.timeline{
+  border-left: 1px solid var(--rule);
+  position: relative;
+}
+.timeline::before,
+.timeline::after{
+  content: "";
+  position: absolute;
+  left: -1px;
+  width: 1px;
+  height: 24px;
+}
+.timeline::before{
+  top: 0;
+  background: linear-gradient(to top, transparent, var(--background));
+}
+.timeline::after{
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, var(--background));
+}
+
+.timeline-item{
+  position: relative;
+}
+
+.timeline-item .bullet{
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: #111;
+  border-radius: 1px;
+
+  /* NEW: aligns exactly with the left border line */
+  left: -4px; /* was -42px, now positioned relative to border */
+
+  /* NEW: vertical alignment tweak */
+  top: 0.75rem; /* matches padding in cards */
+
+  outline: 2px solid var(--background);
+}
+
+/* ---------- Cards ---------- */
+.card{
+  background: var(--card-white);
+  border: 1px solid var(--hard-border);
+  box-shadow: 3px 3px 0 var(--hard-border);
+  transition: box-shadow .15s ease-in-out;
+}
+.card:hover{
+  box-shadow: 7px 7px 0 var(--hard-border);
+}
+
+.card-soft{
+  background: var(--card-soft);
+  border: 1px solid var(--soft-border);
+  transition: border-color .15s, box-shadow .15s, background-color .15s;
+}
+.card-soft:hover{
+  border-color: var(--soft-border-hover);
+  box-shadow: 5px 5px 0 var(--soft-border-hover);
+  background: #fff;
+}
+
+/* ---------- Muted text helper ---------- */
+.text-muted{ color: var(--muted-foreground); }
+
+/* ---------- Footer line ---------- */
+.footer-line{ border-top: 1px solid #000; }
