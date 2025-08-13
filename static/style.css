@@ -37,7 +37,9 @@ body {
 .timeline{
   border-left: 1px solid var(--rule);
   position: relative;
+  --line-top-gap: calc(1rem + 0.75rem); /* hide line above first bullet */
 }
+
 .timeline::before,
 .timeline::after{
   content: "";
@@ -46,10 +48,15 @@ body {
   width: 1px;
   height: 24px;
 }
+
 .timeline::before{
   top: 0;
-  background: linear-gradient(to top, transparent, var(--background));
+  left: -1px;
+  width: 1px;
+  height: var(--line-top-gap);
+  background: var(--background); /* masks the border-left */
 }
+
 .timeline::after{
   bottom: 0;
   background: linear-gradient(to bottom, transparent, var(--background));
@@ -102,3 +109,19 @@ body {
 
 /* ---------- Footer line ---------- */
 .footer-line{ border-top: 1px solid #000; }
+
+/* Permanent inline highlight (looks like selection) */
+.ink-mark{
+  background:#111;          /* ink */
+  color:#fff;               /* paper */
+  padding:0 .250rem;        /* small horizontal inset */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone; /* keeps background/padding on wrapped lines */
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .ink-link {
+    text-underline-offset: 5px;
+  }
+}
