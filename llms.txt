@@ -1,0 +1,15 @@
+# Edge QA
+
+> Independent analysis, evaluation, and simulation testing for voice AI agents.
+> Businesses using our platform detect user frustration early, align their voice AI better, and ultimately avoid losing customers.
+
+Our platform helps you evaluate and improve conversational AI quality without vendor bias. We detect issues like latency, TTR, user frustration, noise sensitivity, and conversation drift — and offer actionable insights to fix them.
+
+## Docs
+
+- [Overview](https://ambersah.dev/edge/index.html): Homepage with features and information.
+- [Contact](https://ambersah.dev/edge/contact.html): Contact page to get access to the product.
+
+## Optional
+
+- [Sitemap](https://ambersah.dev/edge/sitemap.xml)
