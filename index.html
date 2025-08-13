@@ -72,7 +72,7 @@
                 <a class="ink-link ink-link--active" href="/edge">Home</a>
                 <a class="ink-link" href="./contact.html">Contact</a>
                 <span class="popover" id="dashboardPopoverWrap">
-                  <a class="ink-link popover-trigger" href="#" onclick="return false">Dashboard</a>
+                  <a class="ink-link popover-trigger" href="#" onclick="return false" aria-haspopup="dialog" aria-expanded="false">Dashboard</a>
                   <div id="dashboardPopover" class="popover-card" role="dialog" aria-label="Dashboard preview">
                     <div class="popover-title">Private Preview</div>
                     <p class="popover-text">Dashboard access is for onboarded users.<br><a class="ink-link" href="./contact.html">Contact us</a> to join.</p>
@@ -214,15 +214,14 @@
     const card = document.getElementById('dashboardPopover');
 
     if (wrap && trigger && card) {
-      // Toggle (pin/unpin) on click
-      trigger.addEventListener('click', function (e) {
+      // Toggle (pin/unpin) on pointerdown
+      trigger.addEventListener('pointerdown', function (e) {
         e.preventDefault();
+        e.stopPropagation();
         const pinned = wrap.getAttribute('data-pinned') === 'true';
         if (pinned) {
-          // Close even while hovered
           wrap.setAttribute('data-pinned', 'false');
           trigger.blur();
-          // After a brief moment, clear the flag so hover works again later
           setTimeout(() => {
             if (wrap.getAttribute('data-pinned') === 'false') {
               wrap.removeAttribute('data-pinned');
@@ -231,6 +230,7 @@
         } else {
           wrap.setAttribute('data-pinned', 'true');
         }
+        trigger.setAttribute('aria-expanded', String(!pinned));
       });
 
       // Close when clicking outside

@@ -163,11 +163,20 @@ body {
 }
 .popover-title{ font-weight: 600; font-size: .825rem; margin-bottom: .25rem; }
 .popover-text{ font-size: .75rem; color: var(--muted-foreground); }
-.popover:hover .popover-card,
+/* .popover:hover .popover-card,
 .popover:focus-within .popover-card{
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(16px);
+} */
+/* Hover/focus only on hover-capable devices */
+@media (hover: hover) and (pointer: fine) {
+  .popover:hover .popover-card,
+  .popover:focus-within .popover-card{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(16px);
+  }
 }
 /* small caret */
 .popover-card::before{
