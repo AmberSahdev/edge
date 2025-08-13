@@ -82,6 +82,24 @@ body {
   outline: 2px solid var(--background);
 }
 
+/* Dotted line after last bullet (Stage 4) */
+.timeline-item:last-child::after {
+  content: "";
+  position: absolute;
+  left: -1px;                 /* exactly over the 1px rule */
+  top: calc(0.75rem + 8px);   /* just below the 7px bullet + 1px gap */
+  width: 1px;                 /* crisp, no anti-aliasing */
+  height: 96px;               /* length of dotted tail; adjust */
+  background-color: var(--background); /* hides the solid rule beneath gaps */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--rule) 0 4px,        /* 4px dash */
+    transparent 4px 12px      /* 8px gap */
+  );
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
 /* ---------- Cards ---------- */
 .card{
   background: var(--card-white);
