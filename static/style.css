@@ -143,3 +143,40 @@ body {
     text-underline-offset: 5px;
   }
 }
+
+/* ---------- Popover for Dashboard ---------- */
+.popover{ position: relative; display: inline-block; }
+.popover-card{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  top: 100%;
+  background: var(--card-white);
+  border: 1px solid var(--hard-border);
+  box-shadow: 3px 3px 0 var(--hard-border);
+  padding: .5rem .75rem;
+  min-width: 16rem;
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .12s ease, transform .12s ease;
+}
+.popover-title{ font-weight: 600; font-size: .825rem; margin-bottom: .25rem; }
+.popover-text{ font-size: .75rem; color: var(--muted-foreground); }
+.popover:hover .popover-card,
+.popover:focus-within .popover-card{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(16px);
+}
+/* small caret */
+.popover-card::before{
+  content: "";
+  position: absolute;
+  top: -5px; left: 50%; transform: translateX(-50%);
+  width: 10px; height: 10px;
+  background: var(--card-white);
+  border-left: 1px solid var(--hard-border);
+  border-top: 1px solid var(--hard-border);
+  transform: translateX(-50%) rotate(45deg);
+}

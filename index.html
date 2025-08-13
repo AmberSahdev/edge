@@ -71,7 +71,13 @@
             <nav class="flex gap-6">
                 <a class="ink-link ink-link--active" href="/edge">Home</a>
                 <a class="ink-link" href="./contact.html">Contact</a>
-                <a class="ink-link" href="./contact.html">Dashboard</a>
+                <span class="popover">
+                  <a class="ink-link popover-trigger" href="#" onclick="return false">Dashboard</a>
+                  <div class="popover-card" role="dialog" aria-label="Dashboard preview">
+                    <div class="popover-title">Private Preview</div>
+                    <p class="popover-text">Dashboard access is for onboarded users.<br><a class="ink-link" href="./contact.html">Contact us</a> to join.</p>
+                  </div>
+                </span>
             </nav>
         </header>
 
