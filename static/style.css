@@ -173,7 +173,7 @@ body {
 .popover-card::before{
   content: "";
   position: absolute;
-  top: -5px; left: 50%; transform: translateX(-50%);
+  top: -5.785px; left: 50%; transform: translateX(-50%);
   width: 10px; height: 10px;
   background: var(--card-white);
   border-left: 1px solid var(--hard-border);
