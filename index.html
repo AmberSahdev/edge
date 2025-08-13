@@ -71,9 +71,9 @@
             <nav class="flex gap-6">
                 <a class="ink-link ink-link--active" href="/edge">Home</a>
                 <a class="ink-link" href="./contact.html">Contact</a>
-                <span class="popover">
+                <span class="popover" id="dashboardPopoverWrap">
                   <a class="ink-link popover-trigger" href="#" onclick="return false">Dashboard</a>
-                  <div class="popover-card" role="dialog" aria-label="Dashboard preview">
+                  <div id="dashboardPopover" class="popover-card" role="dialog" aria-label="Dashboard preview">
                     <div class="popover-title">Private Preview</div>
                     <p class="popover-text">Dashboard access is for onboarded users.<br><a class="ink-link" href="./contact.html">Contact us</a> to join.</p>
                   </div>
@@ -205,5 +205,50 @@
         </div>
     </div>
 </div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const wrap = document.getElementById('dashboardPopoverWrap');
+    const trigger = wrap?.querySelector('.popover-trigger');
+    const card = document.getElementById('dashboardPopover');
+
+    if (wrap && trigger && card) {
+      // Toggle (pin/unpin) on click
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        const pinned = wrap.getAttribute('data-pinned') === 'true';
+        if (pinned) {
+          // Close even while hovered
+          wrap.setAttribute('data-pinned', 'false');
+          trigger.blur();
+          // After a brief moment, clear the flag so hover works again later
+          setTimeout(() => {
+            if (wrap.getAttribute('data-pinned') === 'false') {
+              wrap.removeAttribute('data-pinned');
+            }
+          }, 180);
+        } else {
+          wrap.setAttribute('data-pinned', 'true');
+        }
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', function(e){
+        if (!wrap.contains(e.target)) {
+          wrap.removeAttribute('data-pinned');
+        }
+      });
+
+      document.addEventListener('keydown', function(evt){
+        if (evt.key === 'Escape') {
+          wrap.removeAttribute('data-pinned');
+          trigger.blur();
+        }
+      });
+    }
+  });
+</script>
+
 </body>
 </html>

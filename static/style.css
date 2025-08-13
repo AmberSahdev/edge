@@ -180,3 +180,16 @@ body {
   border-top: 1px solid var(--hard-border);
   transform: translateX(-50%) rotate(45deg);
 }
+
+/* Click-toggle states */
+.popover[data-pinned="true"] .popover-card{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(16px);
+}
+/* Force-hide even if hovered, used momentarily to allow closing while cursor remains */
+.popover[data-pinned="false"] .popover-card{
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateX(-50%) translateY(20px) !important;
+}
