@@ -42,11 +42,11 @@
         <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
             <a class="text-3xl font-serif" href="/edge">Edge</a>
             <nav class="flex gap-6">
-                <a class="ink-link" href="/edge">Home</a>
-                <a class="ink-link ink-link--active" href="./contact.html">Contact</a>
-                <span class="popover">
-                  <a class="ink-link popover-trigger" href="#" onclick="return false">Dashboard</a>
-                  <div class="popover-card" role="dialog" aria-label="Dashboard preview">
+                <a class="ink-link ink-link--active" href="/edge">Home</a>
+                <a class="ink-link" href="./contact.html">Contact</a>
+                <span class="popover" id="dashboardPopoverWrap">
+                  <a class="ink-link popover-trigger" href="#" onclick="return false" aria-haspopup="dialog" aria-expanded="false">Dashboard</a>
+                  <div id="dashboardPopover" class="popover-card" role="dialog" aria-label="Dashboard preview">
                     <div class="popover-title">Private Preview</div>
                     <p class="popover-text">Dashboard access is for onboarded users.<br><a class="ink-link" href="./contact.html">Contact us</a> to join.</p>
                   </div>
@@ -99,5 +99,49 @@
 
     </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const wrap = document.getElementById('dashboardPopoverWrap');
+    const trigger = wrap?.querySelector('.popover-trigger');
+    const card = document.getElementById('dashboardPopover');
+
+    if (wrap && trigger && card) {
+      // Toggle (pin/unpin) on pointerdown
+      trigger.addEventListener('pointerdown', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const pinned = wrap.getAttribute('data-pinned') === 'true';
+        if (pinned) {
+          wrap.setAttribute('data-pinned', 'false');
+          trigger.blur();
+          setTimeout(() => {
+            if (wrap.getAttribute('data-pinned') === 'false') {
+              wrap.removeAttribute('data-pinned');
+            }
+          }, 180);
+        } else {
+          wrap.setAttribute('data-pinned', 'true');
+        }
+        trigger.setAttribute('aria-expanded', String(!pinned));
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', function(e){
+        if (!wrap.contains(e.target)) {
+          wrap.removeAttribute('data-pinned');
+        }
+      });
+
+      document.addEventListener('keydown', function(evt){
+        if (evt.key === 'Escape') {
+          wrap.removeAttribute('data-pinned');
+          trigger.blur();
+        }
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
